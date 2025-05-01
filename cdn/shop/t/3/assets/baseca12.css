@@ -2762,17 +2762,46 @@ details-disclosure > details {
 
 .badge {
   border: 1px solid transparent;
-  border-radius: var(--badge-corner-radius);
   display: inline-block;
   font-size: 1.2rem;
   letter-spacing: 0.1rem;
   line-height: 1;
-  padding: 0.5rem 1.3rem 0.6rem 1.3rem;
+  padding: 1rem 1.3rem 1rem 1.3rem;
   text-align: center;
   background-color: rgb(var(--color-badge-background));
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
   color: rgb(var(--color-foreground));
   word-break: break-word;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 400ms ease-out;
+}
+
+.badge:hover{
+  color: white;
+}
+
+.badge, .badge::before {
+  /* border-radius: var(--badge-corner-radius); */
+}
+
+.badge::before{
+  content:  "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  transform: scaleX(0);
+  z-index: -1;
+  transform-origin: left;
+  transition: transform 400ms ease-out;
+}
+
+.badge:hover::before{
+  transform: scaleX(1);
 }
 
 .gradient {
